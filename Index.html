@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>URBANWEAR - Fashion Store</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f3;
+            color: #111;
+        }
+
+        /* NAVBAR */
+        header {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8%;
+            background: #111;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #d6ff00;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #d6ff00;
+        }
+
+        /* HOME */
+        .hero {
+            min-height: 600px;
+            background: #1b1b1b;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 70px 10%;
+        }
+
+        .hero-text {
+            max-width: 650px;
+        }
+
+        .small-title {
+            color: #d6ff00;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 80px;
+            line-height: 0.9;
+            letter-spacing: -4px;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 span {
+            color: #d6ff00;
+        }
+
+        .hero-text > p:not(.small-title) {
+            max-width: 500px;
+            color: #bbb;
+            line-height: 1.7;
+            margin-bottom: 35px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #d6ff00;
+            color: #111;
+            padding: 16px 25px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background: white;
+        }
+
+        /* FEATURES */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            padding: 60px 10%;
+            gap: 40px;
+            background: white;
+        }
+
+        .features h3 {
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .features h2 {
+            margin-bottom: 10px;
+        }
+
+        .features p {
+            color: #777;
+            line-height: 1.6;
+        }
+
+        /* JUDUL SECTION */
+        .page-title {
+            text-align: center;
+            padding: 90px 20px 60px;
+        }
+
+        .page-title p {
+            color: #777;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .page-title h1 {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .page-title span {
+            color: #777;
+        }
+
+        /* PRODUK */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            padding: 20px 8% 100px;
+        }
+
+        .product-card {
+            background: white;
+            padding-bottom: 25px;
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .product-image {
+            height: 260px;
+            background: #e6e6e2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 90px;
+        }
+
+        .product-card h2 {
+            font-size: 19px;
+            padding: 20px 20px 5px;
+        }
+
+        .product-card p {
+            color: #888;
+            padding: 0 20px 10px;
+        }
+
+        .product-card h3 {
+            padding: 0 20px 20px;
+        }
+
+        .buy-button {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #111;
+            border-bottom: 2px solid #d6ff00;
+            padding-bottom: 5px;
+            font-weight: bold;
+        }
+
+        /* KOLEKSI */
+        .collection {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            padding: 20px 8% 100px;
+        }
+
+        .collection-box {
+            background: #111;
+            color: white;
+            padding: 45px 35px;
+            min-height: 330px;
+            transition: 0.3s;
+        }
+
+        .collection-box:hover {
+            transform: translateY(-8px);
+        }
+
+        .collection-number {
+            color: #d6ff00;
+            font-weight: bold;
+            margin-bottom: 60px;
+        }
+
+        .collection-box h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .collection-box p {
+            color: #aaa;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .collection-box a {
+            color: #d6ff00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* TENTANG */
+        .about {
+            min-height: 650px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            padding: 100px 10%;
+            background: #111;
+            color: white;
+        }
+
+        .about-label p {
+            color: #aaa;
+            letter-spacing: 3px;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .about-label h1 {
+            font-size: 65px;
+            line-height: 0.95;
+        }
+
+        .about-label span {
+            color: #d6ff00;
+        }
+
+        .about-text {
+            padding-top: 50px;
+        }
+
+        .about-text h2 {
+            font-size: 30px;
+            margin-bottom: 25px;
+        }
+
+        .about-text > p {
+            color: #aaa;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 45px;
+            margin-top: 50px;
+        }
+
+        .about-stats h2 {
+            color: #d6ff00;
+            margin-bottom: 5px;
+        }
+
+        .about-stats p {
+            color: #aaa;
+        }
+
+        /* KONTAK */
+        .contact {
+            min-height: 650px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            padding: 90px 10%;
+        }
+
+        .contact-info > p:first-child {
+            color: #777;
+            letter-spacing: 3px;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .contact-info h1 {
+            font-size: 70px;
+            line-height: 0.9;
+            margin-bottom: 35px;
+        }
+
+        .contact-info h1 span {
+            color: #d6ff00;
+        }
+
+        .contact-info > p:nth-of-type(2) {
+            color: #777;
+            line-height: 1.7;
+            max-width: 450px;
+            margin-bottom: 35px;
+        }
+
+        .contact-item {
+            margin-bottom: 20px;
+        }
+
+        .contact-item strong {
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .contact-item p {
+            color: #777;
+            margin-top: 5px;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+        }
+
+        .contact-form h2 {
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            border: none;
+            border-bottom: 2px solid #ddd;
+            padding: 15px 5px;
+            font-family: Arial, sans-serif;
+            outline: none;
+            background: transparent;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #111;
+        }
+
+        button {
+            border: none;
+            background: #111;
+            color: white;
+            padding: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #d6ff00;
+            color: #111;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #111;
+            color: #777;
+            text-align: center;
+            padding: 25px;
+            font-size: 13px;
+        }
+
+        /* RESPONSIVE HP */
+        @media (max-width: 900px) {
+
+            header {
+                height: auto;
+                padding: 20px;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 55px;
+            }
+
+            .features,
+            .products,
+            .collection {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about,
+            .contact {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .features,
+            .products,
+            .collection {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 60px 7%;
+            }
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            .page-title h1 {
+                font-size: 38px;
+            }
+
+            .about-label h1,
+            .contact-info h1 {
+                font-size: 50px;
+            }
+
+            .about,
+            .contact {
+                padding: 70px 7%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header>
+
+    <div class="logo">
+        URBAN<span>WEAR</span>
+    </div>
+
+    <nav>
+        <a href="#home">HOME</a>
+        <a href="#produk">PRODUK</a>
+        <a href="#koleksi">KOLEKSI</a>
+        <a href="#tentang">TENTANG</a>
+        <a href="#kontak">KONTAK</a>
+    </nav>
+
+</header>
+
+
+<!-- ================= HOME ================= -->
+
+<section id="home" class="hero">
+
+    <div class="hero-text">
+
+        <p class="small-title">
+            NEW COLLECTION 2026
+        </p>
+
+        <h1>
+            STYLE<br>
+            YOUR <span>STORY.</span>
+        </h1>
+
+        <p>
+            Temukan pakaian modern dengan desain nyaman
+            yang cocok untuk menemani setiap aktivitasmu.
+        </p>
+
+        <a href="#produk" class="button">
+            BELANJA SEKARANG →
+        </a>
+
+    </div>
+
+</section>
+
+
+<section class="features">
+
+    <div>
+        <h3>01</h3>
+        <h2>Modern Style</h2>
+        <p>
+            Desain kekinian untuk gaya sehari-hari.
+        </p>
+    </div>
+
+    <div>
+        <h3>02</h3>
+        <h2>Premium Quality</h2>
+        <p>
+            Menggunakan bahan nyaman dan berkualitas.
+        </p>
+    </div>
+
+    <div>
+        <h3>03</h3>
+        <h2>Affordable</h2>
+        <p>
+            Fashion keren dengan harga bersahabat.
+        </p>
+    </div>
+
+</section>
+
+
+<!-- ================= PRODUK ================= -->
+
+<section id="produk">
+
+    <div class="page-title">
+
+        <p>OUR PRODUCTS</p>
+
+        <h1>
+            Produk Pilihan
+        </h1>
+
+        <span>
+            Temukan style favoritmu.
+        </span>
+
+    </div>
+
+
+    <div class="products">
+
+        <div class="product-card">
+
+            <div class="product-image">
+                👕
+            </div>
+
+            <h2>
+                Essential Oversized Tee
+            </h2>
+
+            <p>
+                Oversized T-Shirt
+            </p>
+
+            <h3>
+                Rp129.000
+            </h3>
+
+            <a href="#kontak" class="buy-button">
+                BELI SEKARANG
+            </a>
+
+        </div>
+
+
+        <div class="product-card">
+
+            <div class="product-image">
+                👔
+            </div>
+
+            <h2>
+                Urban Basic Shirt
+            </h2>
+
+            <p>
+                Casual Shirt
+            </p>
+
+            <h3>
+                Rp179.000
+            </h3>
+
+            <a href="#kontak" class="buy-button">
+                BELI SEKARANG
+            </a>
+
+        </div>
+
+
+        <div class="product-card">
+
+            <div class="product-image">
+                🧥
+            </div>
+
+            <h2>
+                Street Jacket
+            </h2>
+
+            <p>
+                Daily Jacket
+            </p>
+
+            <h3>
+                Rp299.000
+            </h3>
+
+            <a href="#kontak" class="buy-button">
+                BELI SEKARANG
+            </a>
+
+        </div>
+
+
+        <div class="product-card">
+
+            <div class="product-image">
+                👚
+            </div>
+
+            <h2>
+                Minimalist Hoodie
+            </h2>
+
+            <p>
+                Premium Hoodie
+            </p>
+
+            <h3>
+                Rp249.000
+            </h3>
+
+            <a href="#kontak" class="buy-button">
+                BELI SEKARANG
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= KOLEKSI ================= -->
+
+<section id="koleksi">
+
+    <div class="page-title">
+
+        <p>OUR COLLECTION</p>
+
+        <h1>
+            Explore Your Style
+        </h1>
+
+        <span>
+            Pilih gaya yang paling menggambarkan dirimu.
+        </span>
+
+    </div>
+
+
+    <div class="collection">
+
+        <div class="collection-box">
+
+            <div class="collection-number">
+                01
+            </div>
+
+            <h2>
+                CASUAL
+            </h2>
+
+            <p>
+                Gaya santai yang tetap terlihat stylish.
+                Cocok untuk aktivitas sehari-hari.
+            </p>
+
+            <a href="#produk">
+                EXPLORE →
+            </a>
+
+        </div>
+
+
+        <div class="collection-box">
+
+            <div class="collection-number">
+                02
+            </div>
+
+            <h2>
+                STREETWEAR
+            </h2>
+
+            <p>
+                Perpaduan outfit modern dengan karakter
+                street style yang kuat.
+            </p>
+
+            <a href="#produk">
+                EXPLORE →
+            </a>
+
+        </div>
+
+
+        <div class="collection-box">
+
+            <div class="collection-number">
+                03
+            </div>
+
+            <h2>
+                MINIMALIST
+            </h2>
+
+            <p>
+                Desain sederhana dan clean untuk tampilan
+                elegan tanpa berlebihan.
+            </p>
+
+            <a href="#produk">
+                EXPLORE →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TENTANG ================= -->
+
+<section id="tentang" class="about">
+
+    <div class="about-label">
+
+        <p>
+            ABOUT US
+        </p>
+
+        <h1>
+            WEAR<br>
+            YOUR<br>
+            <span>IDENTITY.</span>
+        </h1>
+
+    </div>
+
+
+    <div class="about-text">
+
+        <h2>
+            Fashion untuk generasi modern.
+        </h2>
+
+        <p>
+            URBANWEAR adalah toko fashion yang menghadirkan
+            pakaian modern, nyaman, dan mudah dipadukan
+            untuk berbagai aktivitas.
+        </p>
+
+        <p>
+            Kami percaya bahwa pakaian bukan hanya tentang
+            penampilan, tetapi juga cara seseorang menunjukkan
+            karakter dan kepercayaan dirinya.
+        </p>
+
+
+        <div class="about-stats">
+
+            <div>
+                <h2>2026</h2>
+                <p>Established</p>
+            </div>
+
+            <div>
+                <h2>100+</h2>
+                <p>Products</p>
+            </div>
+
+            <div>
+                <h2>4.9/5</h2>
+                <p>Rating</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= KONTAK ================= -->
+
+<section id="kontak" class="contact">
+
+    <div class="contact-info">
+
+        <p>
+            GET IN TOUCH
+        </p>
+
+        <h1>
+            LET'S<br>
+            <span>TALK.</span>
+        </h1>
+
+        <p>
+            Punya pertanyaan mengenai produk atau ingin
+            melakukan pemesanan? Hubungi kami.
+        </p>
+
+
+        <div class="contact-item">
+
+            <strong>
+                EMAIL
+            </strong>
+
+            <p>
+                hello@urbanwear.com
+            </p>
+
+        </div>
+
+
+        <div class="contact-item">
+
+            <strong>
+                INSTAGRAM
+            </strong>
+
+            <p>
+                @urbanwear.id
+            </p>
+
+        </div>
+
+
+        <div class="contact-item">
+
+            <strong>
+                LOCATION
+            </strong>
+
+            <p>
+                Surabaya, Indonesia
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="contact-form">
+
+        <h2>
+            Pesan Sekarang
+        </h2>
+
+        <form>
+
+            <input
+                type="text"
+                placeholder="Nama kamu"
+            >
+
+            <input
+                type="email"
+                placeholder="Email"
+            >
+
+            <input
+                type="text"
+                placeholder="Produk yang ingin dibeli"
+            >
+
+            <textarea
+                rows="5"
+                placeholder="Pesan"
+            ></textarea>
+
+            <button type="submit">
+                KIRIM PESAN →
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+        © 2026 URBANWEAR. All Rights Reserved.
+    </p>
+
+</footer>
+
+</body>
+</html>
